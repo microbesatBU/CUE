@@ -3,15 +3,15 @@ Mustafa
 
 **CONTENTS** 
 
-[Downloading Summary](#1)
+[1. Downloading Summary](#1)
 
-[Carbon Use Efficiency](#2)
+[2. Carbon Use Efficiency](#2)
 
->[Unconstrained CUE](#2a)
+>[2a. Unconstrained CUE](#2a)
 
 >>[Phylogenetic Analysis](#2a1)
 
->[Constrained CUE](#2b)
+>[2b. Constrained CUE](#2b)
 
 >>[Uptake Kinetics](#2b1)
 
@@ -38,6 +38,8 @@ The DOE knowledgebase (kBASE) was searched for genomes from six major phyla foun
 |Verr    |      36|      9|         36|
 |Plancto |      29|     12|         29|
 
+*Note: most of the subsequent analyses currently include only Actino, Acido, Verr, Plancto and Betaproteobacteria.*
+
 
 ![](CUEgitsummary_files/figure-html/unnamed-chunk-2-1.png)<!-- -->![](CUEgitsummary_files/figure-html/unnamed-chunk-2-2.png)<!-- -->![](CUEgitsummary_files/figure-html/unnamed-chunk-2-3.png)<!-- -->
 
@@ -53,32 +55,28 @@ A database of exchange reactions was built to represent the full range of metabo
 
 ```
 ## Run 0 stress 0.193728 
-## Run 1 stress 0.2116283 
-## Run 2 stress 0.1965332 
-## Run 3 stress 0.4146856 
-## Run 4 stress 0.1964446 
-## Run 5 stress 0.1979168 
-## Run 6 stress 0.1963321 
-## Run 7 stress 0.1992465 
-## Run 8 stress 0.2006244 
-## Run 9 stress 0.231847 
-## Run 10 stress 0.2161834 
-## Run 11 stress 0.2065952 
-## Run 12 stress 0.1935701 
+## Run 1 stress 0.1916959 
 ## ... New best solution
-## ... procrustes: rmse 0.0101395  max resid 0.09830386 
-## Run 13 stress 0.1918736 
-## ... New best solution
-## ... procrustes: rmse 0.01992948  max resid 0.1192358 
-## Run 14 stress 0.1925686 
-## Run 15 stress 0.1942663 
-## Run 16 stress 0.1972297 
-## Run 17 stress 0.1978553 
-## Run 18 stress 0.1937872 
-## Run 19 stress 0.2028022 
-## Run 20 stress 0.1916873 
-## ... New best solution
-## ... procrustes: rmse 0.01164191  max resid 0.1326139
+## ... procrustes: rmse 0.01880379  max resid 0.1134417 
+## Run 2 stress 0.1930628 
+## Run 3 stress 0.2056006 
+## Run 4 stress 0.4148659 
+## Run 5 stress 0.2061946 
+## Run 6 stress 0.2167616 
+## Run 7 stress 0.1980802 
+## Run 8 stress 0.200008 
+## Run 9 stress 0.1963522 
+## Run 10 stress 0.1937525 
+## Run 11 stress 0.2312129 
+## Run 12 stress 0.1937272 
+## Run 13 stress 0.2125163 
+## Run 14 stress 0.1944729 
+## Run 15 stress 0.202756 
+## Run 16 stress 0.2215017 
+## Run 17 stress 0.2230842 
+## Run 18 stress 0.1951894 
+## Run 19 stress 0.2014534 
+## Run 20 stress 0.2007262
 ```
 
 ![](CUEgitsummary_files/figure-html/unnamed-chunk-3-2.png)<!-- -->![](CUEgitsummary_files/figure-html/unnamed-chunk-3-3.png)<!-- -->
@@ -93,7 +91,7 @@ Carbon use efficiency was explored under two scenarios. (1) Unconstrained CUE wa
 #2a
 ##**UNCONSTRAINED CUE**
 
-Unconstrained CUE ranged from 0.077259 to 0.916791.
+Unconstrained CUE ranged from 0.077259 to 0.916791. Average unconstained CUE was 0.5338781 +/- 0.1642163.
 
 ![](CUEgitsummary_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
 
@@ -126,6 +124,7 @@ The following heat maps show trait distribution across the phylogenetic tree. Ex
 Phylogenetic Independent Contrasts were used to test for relationships between CUE and genome traits.
 
 ![](CUEgitsummary_files/figure-html/unnamed-chunk-7-1.png)<!-- -->![](CUEgitsummary_files/figure-html/unnamed-chunk-7-2.png)<!-- -->![](CUEgitsummary_files/figure-html/unnamed-chunk-7-3.png)<!-- -->![](CUEgitsummary_files/figure-html/unnamed-chunk-7-4.png)<!-- -->![](CUEgitsummary_files/figure-html/unnamed-chunk-7-5.png)<!-- -->
+
 |        | Intercept|      Slope|     R-Adj|
 |:-------|---------:|----------:|---------:|
 |Exrxns  | 0.9608944| -0.0039505| 0.1457687|
@@ -150,6 +149,12 @@ The uptake kinetics of the most common *constraining* reactions across models we
 
 #2b1
 ### Uptake Kinetics
+
+The uptake kinetics were compared for the most common constraining C-containing exchange reactions. Preliminarily, it appears that uptake kinetics for a given metabolite do not vary between models, but that different metabolite have different uptake kinetics. Biomass flux v. substrate-specific uptake was plotted for a single acidobacterial model and curves were fit with linear model and Michaelis-Menten (MM) models. Both fits were assessed at 50% max biomass and 25% max biomass, and the substrate concentrations at these values from the LM fits were used as uptake bounds for the constrained CUE calculations. 
+
+gly.phe.10K = the upper bound of all reactions was increased by one or order of magnitude.
+gly.phe.10K1K = upper bound of all intracellular reactions and biomass production set to one order of magnitude greater than exchange reactions.
+
 
 **Km and Vmax for Constraining Lists**
 *Fitting MM Models to Kinetics Data*

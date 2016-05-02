@@ -8,15 +8,15 @@ output:
 
 **CONTENTS** 
 
-[Downloading Summary](#1)
+[1. Downloading Summary](#1)
 
-[Carbon Use Efficiency](#2)
+[2. Carbon Use Efficiency](#2)
 
->[Unconstrained CUE](#2a)
+>[2a. Unconstrained CUE](#2a)
 
 >>[Phylogenetic Analysis](#2a1)
 
->[Constrained CUE](#2b)
+>[2b. Constrained CUE](#2b)
 
 >>[Uptake Kinetics](#2b1)
 
@@ -91,6 +91,8 @@ The DOE knowledgebase (kBASE) was searched for genomes from six major phyla foun
 |Verr    |      36|      9|         36|
 |Plancto |      29|     12|         29|
 
+*Note: most of the subsequent analyses currently include only Actino, Acido, Verr, Plancto and Betaproteobacteria.*
+
 
 ```{r,echo=FALSE,warning=FALSE,message=FALSE}
 #print(xtable(dlsum[,1:3]),type='html')
@@ -146,7 +148,7 @@ Carbon use efficiency was explored under two scenarios. (1) Unconstrained CUE wa
 #2a
 ##**UNCONSTRAINED CUE**
 
-Unconstrained CUE ranged from `r min(cuevals[,3])` to `r max(cuevals[,3])`.
+Unconstrained CUE ranged from `r min(cuevals[,3])` to `r max(cuevals[,3])`. Average unconstained CUE was `r mean(cuevals[,3])` +/- `r sd(cuevals[,3])`.
 
 ```{r,echo=FALSE,warning=FALSE,message=FALSE}
 plot(cuevals[,3],col=as.matrix(cuevals[,9]),pch=16,ylab="CUE",xlab="Models Ordered by Increasing CUE")
@@ -249,6 +251,7 @@ phylomorphospace(droproottree,cuevals[,columns],control=list(col.node=cols),node
 
 #kable(CUEreg[c(1,2,4,6,7),1:3])
 ```
+
 |        | Intercept|      Slope|     R-Adj|
 |:-------|---------:|----------:|---------:|
 |Exrxns  | 0.9608944| -0.0039505| 0.1457687|
@@ -273,6 +276,12 @@ The uptake kinetics of the most common *constraining* reactions across models we
 
 #2b1
 ### Uptake Kinetics
+
+The uptake kinetics were compared for the most common constraining C-containing exchange reactions. Preliminarily, it appears that uptake kinetics for a given metabolite do not vary between models, but that different metabolite have different uptake kinetics. Biomass flux v. substrate-specific uptake was plotted for a single acidobacterial model and curves were fit with linear model and Michaelis-Menten (MM) models. Both fits were assessed at 50% max biomass and 25% max biomass, and the substrate concentrations at these values from the LM fits were used as uptake bounds for the constrained CUE calculations. 
+
+gly.phe.10K = the upper bound of all reactions was increased by one or order of magnitude.
+gly.phe.10K1K = upper bound of all intracellular reactions and biomass production set to one order of magnitude greater than exchange reactions.
+
 
 **Km and Vmax for Constraining Lists**
 *Fitting MM Models to Kinetics Data*
