@@ -1,0 +1,290 @@
+---
+title: "CUE Summary"
+author: "Mustafa"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    number_sections: true
+---
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+#LOAD ALL FILES AND PACKAGES
+setwd("~/Dropbox/BU2016/FBA Workspace")
+library(knitr)
+
+#unconstrained CUE
+library(vegan)
+dlsum=read.csv(file="Model Downloading Summaries/modeldownloadsummary.csv")
+  rownames(dlsum)=dlsum[,1]
+  dlsum=dlsum[,2:5]
+cue=read.csv(file="Unconstrained CUE/CUESummary02292016.csv") #CUE calculations
+nmds=read.csv(file="Exchange Reaction Database/nmdsmatrix.csv") #reaction presence/absence
+exch=read.csv(file="Exchange Reaction Database/exchangecounts.csv")
+biomasscomp=read.csv(file="Unconstrained CUE/gnegbiomasstable.csv")
+exchaccumulation=read.csv(file="Exchange Reaction Database/exchangeaccumulation.csv")
+
+
+#Phylogenetic 
+library(adephylo)
+library(ggplot2)
+require(vegan)
+require(picante)
+require(adephylo)
+require(nlme)
+require(MASS)
+require(ape)
+require(caper)
+require(geiger)
+require(phytools) 
+require(lsr)
+tips=read.csv(file="multiphylosignal/tiplabels04252016.csv")
+  newtips=as.vector(tips$newtiplabel)
+cuevals=read.csv(file="multiphylosignal/treedata04252016.csv",row.names=1)
+tipcolors=read.csv(file="multiphylosignal/tipcolors.csv",header=TRUE)
+  rownames(tipcolors)=tipcolors[,1]
+  tipcolors=tipcolors[,-1]
+
+  #droptips=list(as.vector(read.csv(file="multiphylosignal/droplist04252016.csv"))) 
+droptips=c("fung7","fung4","fung1","fung6","fung21","fung5","fung15","fung16","fung13","fung3","fung2","fung10","fung17","fung14","fung22","fung20","fung11","fung18","fung8","fung12","fung9","fung19","DROP","beta216529","beta208407","gamma241909","gamma206868","gamma29232","gamma206762","gamma1291","gamma239727","gamma1700","gamma241870","gamma1658","gamma244739","gamma1036","gamma1810","gamma25124","gamma207278","gamma207279","gamma27931","gamma29680","gamma240435","gamma206796","alpha23631","alpha239924","alpha239423","alpha216325","alpha23125","alpha210983","alpha210927","alpha240433","alpha242169","alpha210883","alpha242546","alpha3561","alpha27578","alpha216012","alpha1464","alpha2715","alpha29322","alpha25278","alpha1849","alpha240091","alpha884","alpha1480","alpha1262","alpha1263","alpha216407","alpha24923","alpha213861","alpha207171","alpha3854","alpha240427","alpha206960","alpha29554","delta1549","delta1591","delta24611","delta31404","delta1143","delta240449","delta241294","delta1314","delta216275","delta242777","acido239421","firm209983","firm1762","firm1822","firm207030","firm209329","firm1050","firm206769","firm216502","firm1960","firm206825","firm208667","firm207276","firm1051","firm207033","firm207155","firm207227","firm209251","firm207188","firm241242","firm242567","firm1079","firm207289","firm208216","firm1506","firm23121","actino242832","actino1646","actino207280","actino206917","actino209263","actino1734","actino242134","actino1728","actino215749","actino241290","actino207004","actino242857","actino1539","actino30857","actino241325","actino241941","actino1730","actino215897","actino216527","actino1537","actino242150","actino3135","actino1687","actino207069","actino1142","actino207323","actino1571","actino207250","actino216514","actino207016","actino207015","actino207154","actino29591","actino30870","actino241322","actino241934","actino208409","actino239739","actino29570","actino207161","actino241238","actino1498","actino29691","actino206765","actino242230","actino209774","actino241330","actino1015","actino241321","actino215443","actino242565","actino244743","actino1329","actino206770","verr29794")
+
+
+#kinetics
+con=read.csv(file="Constraining and Essential/constraineddifferences.csv")
+  contrim=con
+  contrim[contrim==0]<-NA
+kinetics=read.csv(file="constraininguptakekinetics.csv")
+kinsum=read.csv(file="Constraining and Essential/kineticsummary.csv")
+library(drc)
+```
+
+#**Downloading Summary**
+
+The DOE knowledgebase (kBASE) was searched for genomes from six major phyla found in soil microbial communities. A total of 24,268 genomes were found to correspond to the six major phyla. Results were trimmed to eliminate duplicates within a given genus, resulting in 1,082 unique genera. These genera were searched in the primary literature to determine habitat preference, and eliminate non-soil bacterial species. Ultimately, 231 species were selected for analysis.
+
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+kable(dlsum[,1:3])
+
+#Genomes
+layout(rbind(1,2), heights=c(4,1))
+par(mar=c(0, 0, 1, 0),oma=c(0,0,0,0))
+pie(as.matrix(dlsum[,1]),col=c(as.matrix(dlsum[,4])),labels=NA,border="white",lwd=0.5,main="Genomes in kBase by Phyla [24,268]")
+plot.new()
+par(mar=c(0, 0, 0, 0),oma=c(0,0,0,0))
+legend("top",legend=c(rownames(dlsum)),fill=c(as.matrix(dlsum[,4])),cex=0.75,ncol=3)
+
+#Genera
+layout(rbind(1,2), heights=c(4,1))
+par(mar=c(0, 0, 1, 0),oma=c(0,0,0,0))
+pie(as.matrix(dlsum[,2]),col=c(as.matrix(dlsum[,4])),labels=NA,border="white",lwd=0.5,main="Genera Per Phyla in kBase [1082]")
+plot.new()
+par(mar=c(0, 0, 0, 0),oma=c(0,0,0,0))
+legend("top",legend=c(rownames(dlsum)),fill=c(as.matrix(dlsum[,4])),cex=0.75,ncol=3)
+
+#Selections
+layout(rbind(1,2), heights=c(4,1))
+par(mar=c(0, 0, 1, 0),oma=c(0,0,0,0))
+pie(as.matrix(dlsum[,3]),col=c(as.matrix(dlsum[,4])),labels=NA,border="white",lwd=0.5,main="Model Selections [231]")
+plot.new()
+par(mar=c(0, 0, 0, 0),oma=c(0,0,0,0))
+legend("top",legend=c(rownames(dlsum)),fill=c(as.matrix(dlsum[,4])),cex=0.75,ncol=3)
+dev.off()
+```
+
+A database of exchange reactions was built to represent the full range of metabolites possible for uptake across all models. Number of C atoms and Gibbs free energy were noted for each metabolite. Models were compared for similarity of exchange reaction identity using MDS ordination.
+
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+plot(exchaccumulation[,1],exchaccumulation[,2],main="Cumulative number of exchange reactions",xlab="models sampled",ylab="Number of exchange reactions")
+
+mds=metaMDS(nmds[,2:ncol(nmds)],binary=TRUE)
+stressplot(mds)
+ordiplot(mds,type="n",xlim=c(-1,1))
+ordiellipse(mds,groups=c(nmds[,1]),draw="polygon",col="grey90",label=F,cex=1.5)
+colors=c(rep("darkorange2",25),rep("lightblue2",25),rep("gray22",30),rep("darkolivegreen4",29),rep("mediumorchid3",35))
+#orditorp(mds,display="species",col="darkgrey",air=0.01, cex=0.3)
+orditorp(mds,display="sites",col=colors,air=0.01,pch=16,labels=F)
+legend("topleft",legend=c("acido","actino","beta","plancto","verro" ),fill=c("darkorange2","lightblue2","gray22","darkolivegreen4","mediumorchid3"), cex=0.5)
+```
+
+
+#**CARBON USE EFFICIENCY**
+
+**CUE=(Net C Uptake - Respiration)/(Total C Uptake)**
+
+Carbon use efficiency was explored under two scenarios. (1) Unconstrained CUE was calculated by allowing a model to utilize all exchange reactions present, and (2) Constrained CUE was calculated by limiting the availability of a single constraining C-containing metabolite while leaving all other unconstrained.
+
+
+##**UNCONSTRAINED CUE**
+
+Unconstrained CUE ranged from `r min(cuevals[,3])` to `r max(cuevals[,3])`.
+
+```{r,echo=FALSE}
+plot(cuevals[,3],col=as.matrix(cuevals[,9]),pch=16,ylab="CUE",xlab="Models Ordered by Increasing CUE")
+legend("topleft",legend=c(rownames(dlsum)),fill=c(as.matrix(dlsum[,4])),cex=0.75,ncol=2)
+```
+
+
+###**Phylogenetic Analyses**
+
+Unconstrained CUE was analyzed for a phylogenetic signal.
+K values of 1 correspond to a Brownian motion process, which implies some degree of phylogenetic signal or conservatism. K values closer to zero correspond to a random or convergent pattern of evolution, while K values greater than 1 indicate strong phylogenetic signal and conservatism of traits. 
+
+Unconstrained CUE was found to have a significant phylogenetic signal with a K of 0.03.
+
+```{r,echo=FALSE}
+cuetreenex=read.nexus(file="multiphylosignal/CUETREE4192016")
+cuetreenex=cuetreenex$tree_3
+cuetreenex$tip.label=newtips
+rootedphylogeny <- root(cuetreenex, "root")
+prunedtree<-drop.tip(rootedphylogeny, tip=droptips, trim.internal=TRUE, subtree=FALSE,root.edge=0, rooted=is.rooted(rootedphylogeny), interactive=FALSE)
+multiPhylosignal<-multiPhylosignal(cuevals[,1:7],prunedtree)
+droproottree=drop.tip(prunedtree, tip=c("root"), trim.internal=TRUE, subtree=FALSE,root.edge=0, rooted=is.rooted(rootedphylogeny), interactive=FALSE)
+
+par(mfrow=c(1,1))
+#tree with model names colors by phyla
+plot(droproottree,show.tip.label=T,show.node.label = FALSE,cex=0.3, main="Tree Structure",align.tip.label=T, tip.color=as.matrix(tipcolors[,7]))
+legend("bottomleft",legend=c(rownames(dlsum)),fill=c(as.matrix(dlsum[,4])),cex=0.4,ncol=1,bty="n")
+
+#tree with points scaled to CUE and colored by phyla
+plot(droproottree,show.tip.label=F,show.node.label = FALSE,cex=0.3, main="CUE",align.tip.label=T)
+tiplabels(pch=16,col=as.matrix(tipcolors[,7]),cex =1.2*(tipcolors[,3]/max(tipcolors[,3])))
+tiplabels(text=as.matrix(round(tipcolors[,3],1)),cex=0.5,frame=c("none"),bg=c("none"),adj=-1)
+legend("bottomleft",legend=c(rownames(dlsum)),fill=c(as.matrix(dlsum[,4])),cex=0.4,ncol=1,bty="n")
+
+par(mfrow=c(1,1))
+traitvec=rep(NA,length(droproottree$tip.label))
+for (i in (1:6)){
+        traitvec=c(tipcolors[,i])
+        names(traitvec)=rownames(tipcolors)
+        cuecontmap=contMap(droproottree,traitvec,plot=T,fsize=c(0.25),type="fan")
+        title(main=colnames(tipcolors)[i],line=-1)
+    }
+#n<-length(cuecontmap$cols)
+#cuecontmap$cols[1:n]<-colorRampPalette(c("blue","cyan","yellow","red"), space="Lab")(n)
+
+kable(multiPhylosignal)
+```
+
+
+
+Phylogenetic Independent Contrasts were used to test for relationships between CUE and genome traits.
+
+```{r,echo=FALSE}
+PICvals=matrix(NA,129,7)
+colnames(PICvals)=c("EXpic","Cexpic","CUEpic","GCpic","Contigspic","Genespic","DNAsizepic")
+for (i in 1:7){
+PICvals[,i]=pic(cuevals[,i],droproottree)
+}
+
+CUEreg=matrix(NA,ncol(cuevals),6)
+colnames(CUEreg)=c("Intercept","Slope","R-Adj","PIC Intercept","PIC Slope","PIC R adj")
+rownames(CUEreg)=c(colnames(cuevals))
+
+tip.cols<-c(as.matrix(tipcolors[,7]))
+names(tip.cols)=droproottree$tip.label
+cols<-c(tip.cols[droproottree$tip.label],rep("black",droproottree$Nnode))
+names(cols)<-1:(length(droproottree$tip)+droproottree$Nnode)
+
+for (i in c(1,2,4,6,7)){
+  CUEregression=lm(cuevals[,3]~cuevals[,i])
+  CUEreg[i,1]=summary(CUEregression)$coefficients[1]
+  CUEreg[i,2]=summary(CUEregression)$coefficients[2] 
+  CUEreg[i,3]=summary(CUEregression)$adj.r.squared
+  CUEregression=lm(cuevals[,3]~cuevals[,i])
+  
+  CUEPICreg=lm(PICvals[,3]~PICvals[,i])
+  CUEreg[i,4]=summary(CUEPICreg)$coefficients[1]
+  CUEreg[i,5]=summary(CUEPICreg)$coefficients[2] 
+  CUEreg[i,6]=summary(CUEPICreg)$adj.r.squared
+
+columns<-c(i,3)
+phylomorphospace(droproottree,cuevals[,columns],control=list(col.node=cols),node.size=c(0.25,1),label="off",)
+  abline(CUEregression,col="red",lty=2)
+  legend("bottomleft",legend=c(rownames(dlsum)),fill=c(as.matrix(dlsum[,4])),cex=0.4,ncol=3)
+}
+
+kable(CUEreg[c(1,2,4,6,7),1:3])
+```
+
+##**CONSTRAINED CUE**
+
+For each model in the unconstrained environment, C-containing exchange reactions were classified according to the following hierarchy:
+
+(1) *Utilized*: reactions utilized by the model in the unconstrained environment.
+
+>(2) *Essential*: reactions that are required for biomass production, identified as reactions that result in no biomass production when availability is set to zero.
+
+>>(3) *Constraining*: reactions that biomass production responds to the availability of, i.e. reactions needed at more than a low threshold. 
+
+The uptake kinetics of the most common *constraining* reactions across models were analyzed. The availability of *constraining* reactions was then set to the concentration resulting in (a) 1/2 and (b) 1/4 of maximum biomass and CUE was recalculated.
+
+### Uptake Kinetics
+
+**Km and Vmax for Constraining Lists**
+*Fitting MM Models to Kinetics Data*
+
+```{r, echo=FALSE}
+kmVm=matrix(NA,6,22,dimnames=list(c("Km","Vm","lm-intercept","lm-slope","uptake at 500","uptake at 250"),colnames(kinetics)))
+par(mfrow=c(2,2))
+for (i in 2:ncol(kinetics)){
+  v=kinetics[,i]
+  S=kinetics$uptake
+  model.drm <- drm (v ~ S, data = kinetics, fct = MM.2())
+  modelnls <- nls(v ~ Vm * S/(K+S), data = kinetics,start = list(K = 500, Vm = 1000))
+  MMsummary=summary(modelnls)
+  kmVm[1,i]=MMsummary$parameters[1] #Km
+  kmVm[2,i]=MMsummary$parameters[2] #Vm 
+  kinsubset=kinetics[,i][kinetics[,i]<max(kinetics[,i])]
+  lmsummary=summary(lm(kinsubset~kinetics$uptake[1:length(kinsubset)]))
+  kmVm[3,i]=lmsummary$coefficients[1] #intercept
+  kmVm[4,i]=lmsummary$coefficients[2] #slope
+  kmVm[5,i]=(500-lmsummary$coefficients[1])/lmsummary$coefficients[2]
+  kmVm[6,i]=(250-lmsummary$coefficients[1])/lmsummary$coefficients[2]
+  plot(S,v,main=colnames(kinetics[i]),xlab="Substrate-specific Uptake",ylab="Biomass Flux")
+  xvals=1:10000
+  lines(xvals,MMsummary$parameters[2]*xvals/(MMsummary$parameters[1]+xvals),type="l",lty=2,col="red")
+  lines(xvals,xvals*lmsummary$coefficients[2]+lmsummary$coefficients[1],type="l",lty=2,col="blue")
+  points((500-lmsummary$coefficients[1])/lmsummary$coefficients[2],500,col="red",pch=18)
+  points((250-lmsummary$coefficients[1])/lmsummary$coefficients[2],250,col="red",pch=18)
+}
+par(mfrow=c(1,1))
+kable(kmVm)
+```
+
+
+### Constraint Effect Size 
+Constrained CUE was reduced relative to unconstrained CUE, but the effect size varied by metabolite.
+
+```{r,echo=FALSE}
+#constrainedvals=read.csv(file="Constraining and Essential/constrainedcueall.csv")
+allcon=read.csv(file="Constraining and Essential/allconstrainedsummary04252016.csv",row.names=1,header=T)
+dvalsmat=matrix(NA,40,2)
+
+rownames(dvalsmat)=c(colnames(allcon))
+colnames(dvalsmat)=c("Cohens D","Paired T-test Pval")
+
+par(mfrow=c(2,2))
+for (i in 3:40){
+  dvalsmat[i,1]=round(cohensD(allcon$Unconstrained,allcon[,i],method="paired"),digits=3)
+  plot(allcon[,i],allcon$Unconstrained,xlab=colnames(allcon)[i],ylab="unconCUE",ylim=c(0,1),xlim=c(0,1),main="Uncon CUE v Con CUE")
+  abline(a=0,b=1,lty=2,col="red")
+  dvalsmat[i,2]=round(t.test(allcon$Unconstrained,allcon[,i],paired=T)$p.value,digits=3)
+}
+
+
+kable(dvalsmat[-(1:3),])
+
+par(mfrow=c(2,2))
+boxplot(allcon[,2:21],las=2,varwidth=T,ylab="CUE",main="Substrate at 1/2")
+abline(h=median(allcon[,2]),lty=2,col="red")
+boxplot(dvalsmat[2:21,1]~c(1:20),las=2,ylab="Cohens D")
+abline(h=c(0.2,0.5,0.8),col="red",lty=2)
+
+boxplot(allcon[,c(2,22:40)],las=2,varwidth=T, ylab="CUE",main="Substrate at 1/4")
+abline(h=median(allcon[,2]),lty=2,col="red")
+boxplot(dvalsmat[c(2,22:40),1]~c(1:20),las=2,ylab="Cohens D")
+abline(h=c(0.2,0.5,0.8),col="red",lty=2)
+```
+
