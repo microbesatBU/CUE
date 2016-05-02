@@ -41,7 +41,7 @@ The DOE knowledgebase (kBASE) was searched for genomes from six major phyla foun
 *Note: most of the subsequent analyses currently include only Actino, Acido, Verr, Plancto and Betaproteobacteria.*
 
 
-![](CUEgitsummary_files/figure-html/unnamed-chunk-2-1.png)<!-- -->![](CUEgitsummary_files/figure-html/unnamed-chunk-2-2.png)<!-- -->![](CUEgitsummary_files/figure-html/unnamed-chunk-2-3.png)<!-- -->
+![](CUEgitsummary_files/figure-html/unnamed-chunk-2-1.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-2-2.png)<!-- -->![](CUEgitsummary_files/figure-html/unnamed-chunk-2-3.png)
 
 ```
 ## null device 
