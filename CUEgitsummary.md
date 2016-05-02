@@ -1,4 +1,4 @@
-# CUE Summary
+# CUE Working Summary
 Mustafa  
 
 **CONTENTS** 
@@ -48,7 +48,7 @@ The DOE knowledgebase (kBASE) was searched for genomes from six major phyla foun
 ##           1
 ```
 
-A database of exchange reactions was built to represent the full range of metabolites possible for uptake across all models. Number of C atoms and Gibbs free energy were noted for each metabolite. Models were compared for similarity of exchange reaction identity using MDS ordination.
+A database of exchange reactions was built to represent the full range of metabolites possible for uptake across all models. Models were compared for similarity of exchange reaction identity using MDS ordination.
 
 
 ![](CUEgitsummary_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
@@ -86,7 +86,7 @@ A database of exchange reactions was built to represent the full range of metabo
 
 **CUE=(Net C Uptake - Respiration)/(Total C Uptake)**
 
-Carbon use efficiency was explored under two scenarios. (1) Unconstrained CUE was calculated by allowing a model to utilize all exchange reactions present, and (2) Constrained CUE was calculated by limiting the availability of a single constraining C-containing metabolite while leaving all other unconstrained.
+Carbon use efficiency was explored under two scenarios. (1) Unconstrained CUE was calculated by allowing a model to utilize all exchange reactions present, and (2) Constrained CUE was calculated by limiting the availability of a single constraining C-containing metabolite while leaving all other reactions unconstrained.
 
 #2a
 ##**UNCONSTRAINED CUE**
