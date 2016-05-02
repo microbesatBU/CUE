@@ -1,10 +1,10 @@
 # CUE Summary
 Mustafa  
-[Downloading Summary](#**downloading-summary**)
+[Downloading Summary](#1)
 [Carbon Use Efficiency](#2)
 [Unconstrained CUE](#2a)
 [Phylogenetic Analysis](#2a1)
-[Constrained CUE](#**constrained-cue**)
+[Constrained CUE](#2b)
 [Uptake Kinetics](#2b1)
 [Effect Sizes](#2b2) 
 
@@ -118,7 +118,7 @@ Phylogenetic Independent Contrasts were used to test for relationships between C
 |Genes   | 0.7608438| -0.0000448| 0.2943128|
 |DNAsize | 0.7659457|  0.0000000| 0.3229883|
 
-
+#2b
 ##**CONSTRAINED CUE**
 
 For each model in the unconstrained environment, C-containing exchange reactions were classified according to the following hierarchy:
