@@ -5,13 +5,22 @@ output:
   html_document:
     keep_md: true
 ---
-[Downloading Summary](#**downloading-summary**)
+
+**CONTENTS** 
+
+[Downloading Summary](#1)
+
 [Carbon Use Efficiency](#2)
-[Unconstrained CUE](#2a)
-[Phylogenetic Analysis](#2a1)
-[Constrained CUE](#2b)
-[Uptake Kinetics](#2b1)
-[Effect Sizes](#2b2) 
+
+>[Unconstrained CUE](#2a)
+
+>>[Phylogenetic Analysis](#2a1)
+
+>[Constrained CUE](#2b)
+
+>>[Uptake Kinetics](#2b1)
+
+>>[Effect Sizes](#2b2) 
 
 ```{r,echo=FALSE,warning=FALSE,message=FALSE}
 #LOAD ALL FILES AND PACKAGES
@@ -150,7 +159,7 @@ legend("topleft",legend=c(rownames(dlsum)),fill=c(as.matrix(dlsum[,4])),cex=0.75
 Unconstrained CUE was analyzed for a phylogenetic signal.
 K values of 1 correspond to a Brownian motion process, which implies some degree of phylogenetic signal or conservatism. K values closer to zero correspond to a random or convergent pattern of evolution, while K values greater than 1 indicate strong phylogenetic signal and conservatism of traits. 
 
-Unconstrained CUE was found to have a significant phylogenetic signal with a K of 0.03.
+Unconstrained CUE was found to have a significant phylogenetic signal (K = 0.03, p<0.01).
 
 ```{r,echo=FALSE,warning=FALSE,message=FALSE}
 cuetreenex=read.nexus(file="CUETREE4192016")
@@ -163,21 +172,25 @@ droproottree=drop.tip(prunedtree, tip=c("root"), trim.internal=TRUE, subtree=FAL
 
 par(mfrow=c(1,1))
 #tree with model names colors by phyla
-plot(droproottree,show.tip.label=T,show.node.label = FALSE,cex=0.3, main="Tree Structure",align.tip.label=T, tip.color=as.matrix(tipcolors[,7]))
-legend("bottomleft",legend=c(rownames(dlsum)),fill=c(as.matrix(dlsum[,4])),cex=0.4,ncol=1,bty="n")
+plot(droproottree,show.tip.label=T,show.node.label = FALSE,cex=0.5, main="Tree Structure",align.tip.label=T, tip.color=as.matrix(tipcolors[,7]))
+legend("bottomleft",legend=c(rownames(dlsum)),fill=c(as.matrix(dlsum[,4])),cex=0.5,ncol=1,bty="n")
 
 #tree with points scaled to CUE and colored by phyla
 plot(droproottree,show.tip.label=F,show.node.label = FALSE,cex=0.3, main="CUE",align.tip.label=T)
 tiplabels(pch=16,col=as.matrix(tipcolors[,7]),cex =1.2*(tipcolors[,3]/max(tipcolors[,3])))
 tiplabels(text=as.matrix(round(tipcolors[,3],1)),cex=0.5,frame=c("none"),bg=c("none"),adj=-1)
-legend("bottomleft",legend=c(rownames(dlsum)),fill=c(as.matrix(dlsum[,4])),cex=0.4,ncol=1,bty="n")
+legend("bottomleft",legend=c(rownames(dlsum)),fill=c(as.matrix(dlsum[,4])),cex=0.5,ncol=1,bty="n")
+```
 
+The following heat maps show trait distribution across the phylogenetic tree. Exrxns = number of exchange reactions, Cexrxns = number of C-containing exchange reactions, CUE=unconstrained carbon use efficiency, GC=guanine-cytosine, Genes= number of genes, DNA size= number of base pairs.
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
 par(mfrow=c(1,1))
 traitvec=rep(NA,length(droproottree$tip.label))
 for (i in (1:6)){
         traitvec=c(tipcolors[,i])
         names(traitvec)=rownames(tipcolors)
-        cuecontmap=contMap(droproottree,traitvec,plot=T,fsize=c(0.25),type="fan")
+        cuecontmap=contMap(droproottree,traitvec,plot=T,fsize=c(0.5),type="fan")
         title(main=colnames(tipcolors)[i],line=-1)
     }
 #n<-length(cuecontmap$cols)
@@ -303,7 +316,7 @@ par(mfrow=c(1,1))
 
 #2b2
 ### Constraint Effect Size 
-Constrained CUE was reduced relative to unconstrained CUE, but the effect size varied by metabolite.
+Constrained CUE was reduced relative to unconstrained CUE, but the effect size varied by metabolite. Plots show unconstrained CUE versus constrained CUE for most common constraining metabolite at 50% maximum biomass and at 25% maximum biomass.
 
 ```{r,echo=FALSE,warning=FALSE,message=FALSE}
 #constrainedvals=read.csv(file="Constraining and Essential/constrainedcueall.csv")
@@ -320,11 +333,16 @@ for (i in 3:40){
   abline(a=0,b=1,lty=2,col="red")
   dvalsmat[i,2]=round(t.test(allcon$Unconstrained,allcon[,i],paired=T)$p.value,digits=3)
 }
-
-
 #kable(dvalsmat[-(1:3),])
+```
 
-par(mfrow=c(2,2))
+
+
+**CONSTRAINED/UNCONSTRAINED COMPARISONS AND COHENS D**
+
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+par(mfrow=c(1,1))
 boxplot(allcon[,2:21],las=2,varwidth=T,ylab="CUE",main="Substrate at 1/2")
 abline(h=median(allcon[,2]),lty=2,col="red")
 boxplot(dvalsmat[2:21,1]~c(1:20),las=2,ylab="Cohens D")
