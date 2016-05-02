@@ -175,7 +175,7 @@ gly.phe.10K1K = upper bound of all intracellular reactions and biomass productio
 
 #2b2
 ### Constraint Effect Size 
-Constrained CUE was reduced relative to unconstrained CUE, but the effect size varied by metabolite. Plots show unconstrained CUE versus constrained CUE for most common constraining metabolite at 50% maximum biomass and at 25% maximum biomass.
+Constrained CUE was reduced relative to unconstrained CUE, but the effect size varied by metabolite. Plots show unconstrained CUE versus constrained CUE for most common constraining metabolite at 50% maximum biomass and at 25% maximum biomass. Note that all models containing the reaction were run in these scenarios even if the model was not "constrained" by the metabolite, resulting in many points along the 1:1 line for several metabolites.
 
 ![](CUEgitsummary_files/figure-html/unnamed-chunk-9-1.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-9-2.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-9-3.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-9-4.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-9-5.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-9-6.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-9-7.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-9-8.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-9-9.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-9-10.png)
 
