@@ -126,13 +126,14 @@ A database of exchange reactions was built to represent the full range of metabo
 
 
 ```{r,echo=FALSE,warning=FALSE,message=FALSE}
-plot(exchaccumulation[,1],exchaccumulation[,2],main="Cumulative number of exchange reactions",xlab="models sampled",ylab="Number of exchange reactions")
+plot(exchaccumulation[,1],exchaccumulation[,2],main="Cumulative Number of Exchange Reactions",xlab="Models Sampled",ylab="Number of Exchange Reactions",cex=0.5,col="red")
 
 mds=metaMDS(nmds[,2:ncol(nmds)],binary=TRUE)
-stressplot(mds)
-ordiplot(mds,type="n",xlim=c(-1,1))
-ordiellipse(mds,groups=c(nmds[,1]),draw="polygon",col="grey90",label=F,cex=1.5)
+#stressplot(mds)
 colors=c(rep("darkorange2",25),rep("lightblue2",25),rep("gray22",30),rep("darkolivegreen4",29),rep("mediumorchid3",35))
+
+ordiplot(mds,type="n",ylim=c(-0.5,0.5),xlim=c(0,0.5),display="species")
+ordiellipse(mds,groups=c(nmds[,1]),draw="polygon",col="grey90",label=F,cex=1.5,border="red")
 #orditorp(mds,display="species",col="darkgrey",air=0.01, cex=0.3)
 orditorp(mds,display="sites",col=colors,air=0.01,pch=16,labels=F)
 legend("topleft",legend=c("acido","actino","beta","plancto","verro" ),fill=c("darkorange2","lightblue2","gray22","darkolivegreen4","mediumorchid3"), cex=0.5)
@@ -282,9 +283,7 @@ The uptake kinetics were compared for the most common constraining C-containing 
 gly.phe.10K = the upper bound of all reactions was increased by one or order of magnitude.
 gly.phe.10K1K = upper bound of all intracellular reactions and biomass production set to one order of magnitude greater than exchange reactions.
 
-
-**Km and Vmax for Constraining Lists**
-*Fitting MM Models to Kinetics Data*
+*Fitting LM and MM Models to Uptake Kinetics*
 
 ```{r,echo=FALSE,warning=FALSE,message=FALSE}
 kmVm=matrix(NA,6,22,dimnames=list(c("Km","Vm","lm-intercept","lm-slope","uptake at 500","uptake at 250"),colnames(kinetics)))
@@ -345,10 +344,7 @@ for (i in 3:40){
 #kable(dvalsmat[-(1:3),])
 ```
 
-
-
 **CONSTRAINED/UNCONSTRAINED COMPARISONS AND COHENS D**
-
 
 ```{r,echo=FALSE,warning=FALSE,message=FALSE}
 par(mfrow=c(1,1))
