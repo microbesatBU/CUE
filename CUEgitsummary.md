@@ -1,6 +1,6 @@
 # CUE Summary
 Mustafa  
-[Downloading Summary](#1)
+[Downloading Summary](#**downloading-summary**)
 [Carbon Use Efficiency](#2)
 [Unconstrained CUE](#2a)
 [Phylogenetic Analysis](#2a1)
@@ -44,32 +44,29 @@ A database of exchange reactions was built to represent the full range of metabo
 
 ```
 ## Run 0 stress 0.193728 
-## Run 1 stress 0.2144747 
-## Run 2 stress 0.1975517 
-## Run 3 stress 0.1939276 
-## ... procrustes: rmse 0.01218543  max resid 0.1232379 
-## Run 4 stress 0.1952102 
-## Run 5 stress 0.1937309 
-## ... procrustes: rmse 0.006099197  max resid 0.06816935 
-## Run 6 stress 0.1960862 
-## Run 7 stress 0.1989834 
-## Run 8 stress 0.1921 
+## Run 1 stress 0.2248027 
+## Run 2 stress 0.2023532 
+## Run 3 stress 0.1917397 
 ## ... New best solution
-## ... procrustes: rmse 0.01732113  max resid 0.1033532 
-## Run 9 stress 0.1926826 
-## Run 10 stress 0.1967125 
-## Run 11 stress 0.2100929 
-## Run 12 stress 0.1937928 
-## Run 13 stress 0.1916591 
-## ... New best solution
-## ... procrustes: rmse 0.007434838  max resid 0.08567116 
-## Run 14 stress 0.2013685 
-## Run 15 stress 0.1993103 
-## Run 16 stress 0.2078659 
-## Run 17 stress 0.2359709 
-## Run 18 stress 0.1937929 
-## Run 19 stress 0.1964849 
-## Run 20 stress 0.2217218
+## ... procrustes: rmse 0.01921493  max resid 0.1135103 
+## Run 4 stress 0.1961137 
+## Run 5 stress 0.2009415 
+## Run 6 stress 0.1935689 
+## Run 7 stress 0.197812 
+## Run 8 stress 0.1944106 
+## Run 9 stress 0.217503 
+## Run 10 stress 0.1937768 
+## Run 11 stress 0.1961122 
+## Run 12 stress 0.2154284 
+## Run 13 stress 0.2016209 
+## Run 14 stress 0.2100975 
+## Run 15 stress 0.1989836 
+## Run 16 stress 0.1918793 
+## ... procrustes: rmse 0.01205787  max resid 0.1355231 
+## Run 17 stress 0.1986149 
+## Run 18 stress 0.2210474 
+## Run 19 stress 0.1999308 
+## Run 20 stress 0.2018305
 ```
 
 ![](CUEgitsummary_files/figure-html/unnamed-chunk-3-2.png)<!-- -->![](CUEgitsummary_files/figure-html/unnamed-chunk-3-3.png)<!-- -->
