@@ -41,17 +41,15 @@ The DOE knowledgebase (kBASE) was searched for genomes from six major phyla foun
 *Note: most of the subsequent analyses currently include only Actino, Acido, Verr, Plancto and Betaproteobacteria.*
 
 
-![](CUEgitsummary_files/figure-html/unnamed-chunk-2-1.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-2-2.png)<!-- -->![](CUEgitsummary_files/figure-html/unnamed-chunk-2-3.png)
+![](CUEgitsummary_files/figure-html/unnamed-chunk-2-1.png)
+![](CUEgitsummary_files/figure-html/unnamed-chunk-2-2.png)
+![](CUEgitsummary_files/figure-html/unnamed-chunk-2-3.png)
 
-```
-## null device 
-##           1
-```
 
 A database of exchange reactions was built to represent the full range of metabolites possible for uptake across all models. Models were compared for similarity of exchange reaction identity using MDS ordination.
 
 
-![](CUEgitsummary_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
+![](CUEgitsummary_files/figure-html/unnamed-chunk-3-1.png)
 
 ```
 ## Run 0 stress 0.193728 
@@ -79,7 +77,8 @@ A database of exchange reactions was built to represent the full range of metabo
 ## Run 20 stress 0.2007262
 ```
 
-![](CUEgitsummary_files/figure-html/unnamed-chunk-3-2.png)<!-- -->![](CUEgitsummary_files/figure-html/unnamed-chunk-3-3.png)<!-- -->
+![](CUEgitsummary_files/figure-html/unnamed-chunk-3-2.png)
+![](CUEgitsummary_files/figure-html/unnamed-chunk-3-3.png)
 
 #2
 #**CARBON USE EFFICIENCY**
@@ -93,7 +92,7 @@ Carbon use efficiency was explored under two scenarios. (1) Unconstrained CUE wa
 
 Unconstrained CUE ranged from 0.077259 to 0.916791. Average unconstained CUE was 0.5338781 +/- 0.1642163.
 
-![](CUEgitsummary_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+![](CUEgitsummary_files/figure-html/unnamed-chunk-4-1.png)
 
 #2a1
 ###**Phylogenetic Analyses**
@@ -103,11 +102,11 @@ K values of 1 correspond to a Brownian motion process, which implies some degree
 
 Unconstrained CUE was found to have a significant phylogenetic signal (K = 0.03, p<0.01).
 
-![](CUEgitsummary_files/figure-html/unnamed-chunk-5-1.png)<!-- -->![](CUEgitsummary_files/figure-html/unnamed-chunk-5-2.png)<!-- -->
+![](CUEgitsummary_files/figure-html/unnamed-chunk-5-1.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-5-2.png)
 
 The following heat maps show trait distribution across the phylogenetic tree. Exrxns = number of exchange reactions, Cexrxns = number of C-containing exchange reactions, CUE=unconstrained carbon use efficiency, GC=guanine-cytosine, Genes= number of genes, DNA size= number of base pairs.
 
-![](CUEgitsummary_files/figure-html/unnamed-chunk-6-1.png)<!-- -->![](CUEgitsummary_files/figure-html/unnamed-chunk-6-2.png)<!-- -->![](CUEgitsummary_files/figure-html/unnamed-chunk-6-3.png)<!-- -->![](CUEgitsummary_files/figure-html/unnamed-chunk-6-4.png)<!-- -->![](CUEgitsummary_files/figure-html/unnamed-chunk-6-5.png)<!-- -->![](CUEgitsummary_files/figure-html/unnamed-chunk-6-6.png)<!-- -->
+![](CUEgitsummary_files/figure-html/unnamed-chunk-6-1.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-6-2.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-6-3.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-6-4.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-6-5.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-6-6.png)
 
 |        |         K| PIC.variance.obs| PIC.variance.rnd.mean| PIC.variance.P| PIC.variance.Z|
 |:-------|---------:|----------------:|---------------------:|--------------:|--------------:|
@@ -123,7 +122,7 @@ The following heat maps show trait distribution across the phylogenetic tree. Ex
 
 Phylogenetic Independent Contrasts were used to test for relationships between CUE and genome traits.
 
-![](CUEgitsummary_files/figure-html/unnamed-chunk-7-1.png)<!-- -->![](CUEgitsummary_files/figure-html/unnamed-chunk-7-2.png)<!-- -->![](CUEgitsummary_files/figure-html/unnamed-chunk-7-3.png)<!-- -->![](CUEgitsummary_files/figure-html/unnamed-chunk-7-4.png)<!-- -->![](CUEgitsummary_files/figure-html/unnamed-chunk-7-5.png)<!-- -->
+![](CUEgitsummary_files/figure-html/unnamed-chunk-7-1.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-7-2.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-7-3.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-7-4.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-7-5.png)
 
 |        | Intercept|      Slope|     R-Adj|
 |:-------|---------:|----------:|---------:|
@@ -163,7 +162,7 @@ gly.phe.10K1K = upper bound of all intracellular reactions and biomass productio
 **Km and Vmax for Constraining Lists**
 *Fitting MM Models to Kinetics Data*
 
-![](CUEgitsummary_files/figure-html/unnamed-chunk-8-1.png)<!-- -->![](CUEgitsummary_files/figure-html/unnamed-chunk-8-2.png)<!-- -->![](CUEgitsummary_files/figure-html/unnamed-chunk-8-3.png)<!-- -->![](CUEgitsummary_files/figure-html/unnamed-chunk-8-4.png)<!-- -->![](CUEgitsummary_files/figure-html/unnamed-chunk-8-5.png)<!-- -->![](CUEgitsummary_files/figure-html/unnamed-chunk-8-6.png)<!-- -->
+![](CUEgitsummary_files/figure-html/unnamed-chunk-8-1.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-8-2.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-8-3.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-8-4.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-8-5.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-8-6.png)
 
 |              | uptake|     L.Lysine|   Gly.Phe.1K|  Gly.Phe.10K| Gly.Phe.10K1K|        ocdca|       TRHL|      Gly.Tyr|       ddca|   gly.asn.L| L.Isoleucine| Myristic.acid|      Ala.His| L.Phenylalanine| L.Arginine| L.Tyrosine|  D.Arabinose|     Cytidine|     L.Valine|   L.Proline|  L.Histidine| Glycerol.3.phosphate|
 |:-------------|------:|------------:|------------:|------------:|-------------:|------------:|----------:|------------:|----------:|-----------:|------------:|-------------:|------------:|---------------:|----------:|----------:|------------:|------------:|------------:|-----------:|------------:|--------------------:|
@@ -178,14 +177,14 @@ gly.phe.10K1K = upper bound of all intracellular reactions and biomass productio
 ### Constraint Effect Size 
 Constrained CUE was reduced relative to unconstrained CUE, but the effect size varied by metabolite. Plots show unconstrained CUE versus constrained CUE for most common constraining metabolite at 50% maximum biomass and at 25% maximum biomass.
 
-![](CUEgitsummary_files/figure-html/unnamed-chunk-9-1.png)<!-- -->![](CUEgitsummary_files/figure-html/unnamed-chunk-9-2.png)<!-- -->![](CUEgitsummary_files/figure-html/unnamed-chunk-9-3.png)<!-- -->![](CUEgitsummary_files/figure-html/unnamed-chunk-9-4.png)<!-- -->![](CUEgitsummary_files/figure-html/unnamed-chunk-9-5.png)<!-- -->![](CUEgitsummary_files/figure-html/unnamed-chunk-9-6.png)<!-- -->![](CUEgitsummary_files/figure-html/unnamed-chunk-9-7.png)<!-- -->![](CUEgitsummary_files/figure-html/unnamed-chunk-9-8.png)<!-- -->![](CUEgitsummary_files/figure-html/unnamed-chunk-9-9.png)<!-- -->![](CUEgitsummary_files/figure-html/unnamed-chunk-9-10.png)<!-- -->
+![](CUEgitsummary_files/figure-html/unnamed-chunk-9-1.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-9-2.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-9-3.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-9-4.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-9-5.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-9-6.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-9-7.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-9-8.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-9-9.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-9-10.png)
 
 
 
 **CONSTRAINED/UNCONSTRAINED COMPARISONS AND COHENS D**
 
 
-![](CUEgitsummary_files/figure-html/unnamed-chunk-10-1.png)<!-- -->![](CUEgitsummary_files/figure-html/unnamed-chunk-10-2.png)<!-- -->![](CUEgitsummary_files/figure-html/unnamed-chunk-10-3.png)<!-- -->![](CUEgitsummary_files/figure-html/unnamed-chunk-10-4.png)<!-- -->
+![](CUEgitsummary_files/figure-html/unnamed-chunk-10-1.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-10-2.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-10-3.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-10-4.png)
 
 |              | Cohens D| Paired T-test Pval|
 |:-------------|--------:|------------------:|
