@@ -20,8 +20,7 @@ Mustafa
 
 
 
-#1
-#**Downloading Summary**
+#1 #**Downloading Summary**
 
 The DOE knowledgebase (kBASE) was searched for genomes from six major phyla found in soil microbial communities. A total of 24,268 genomes were found to correspond to the six major phyla. Results were trimmed to eliminate duplicates within a given genus, resulting in 1,082 unique genera. These genera were searched in the primary literature to determine habitat preference, and eliminate non-soil bacterial species. Ultimately, 231 species were selected for analysis.
 
@@ -77,22 +76,19 @@ A database of exchange reactions was built to represent the full range of metabo
 
 ![](CUEgitsummary_files/figure-html/unnamed-chunk-3-2.png)
 
-#2
-#**CARBON USE EFFICIENCY**
+#2 #**CARBON USE EFFICIENCY**
 
 **CUE=(Net C Uptake - Respiration)/(Total C Uptake)**
 
 Carbon use efficiency was explored under two scenarios. (1) Unconstrained CUE was calculated by allowing a model to utilize all exchange reactions present, and (2) Constrained CUE was calculated by limiting the availability of a single constraining C-containing metabolite while leaving all other unconstrained.
 
-#2a
-##**UNCONSTRAINED CUE**
+#2a ##**UNCONSTRAINED CUE**
 
 Unconstrained CUE ranged from 0.077259 to 0.916791. Average unconstained CUE was 0.5338781 +/- 0.1642163.
 
 ![](CUEgitsummary_files/figure-html/unnamed-chunk-4-1.png)
 
-#2a1
-###**Phylogenetic Analyses**
+#2a1 ###**Phylogenetic Analyses**
 
 Unconstrained CUE was analyzed for a phylogenetic signal.
 K values of 1 correspond to a Brownian motion process, which implies some degree of phylogenetic signal or conservatism. K values closer to zero correspond to a random or convergent pattern of evolution, while K values greater than 1 indicate strong phylogenetic signal and conservatism of traits. 
@@ -130,8 +126,7 @@ Phylogenetic Independent Contrasts were used to test for relationships between C
 |DNAsize | 0.7659457|  0.0000000| 0.3229883|
 
 
-#2b
-##**CONSTRAINED CUE**
+#2b ##**CONSTRAINED CUE**
 
 For each model in the unconstrained environment, C-containing exchange reactions were classified according to the following hierarchy:
 
@@ -145,8 +140,7 @@ For each model in the unconstrained environment, C-containing exchange reactions
 
 The uptake kinetics of the most common *constraining* reactions across models were analyzed. The availability of *constraining* reactions was then set to the concentration resulting in (a) 1/2 and (b) 1/4 of maximum biomass and CUE was recalculated.
 
-#2b1
-### Uptake Kinetics
+#2b1 ### Uptake Kinetics
 
 The uptake kinetics were compared for the most common constraining C-containing exchange reactions. Preliminarily, it appears that uptake kinetics for a given metabolite do not vary between models, but that different metabolite have different uptake kinetics. Biomass flux v. substrate-specific uptake was plotted for a single acidobacterial model and curves were fit with linear model and Michaelis-Menten (MM) models. Both fits were assessed at 50% max biomass and 25% max biomass, and the substrate concentrations at these values from the LM fits were used as uptake bounds for the constrained CUE calculations. 
 
@@ -166,8 +160,7 @@ gly.phe.10K1K = upper bound of all intracellular reactions and biomass productio
 |uptake at 500 |     NA|  155.2243107|   56.9450328| 5.693625e+01|     56.069331|   42.5921688|   62.52650|   40.0235890|   62.52650|  100.415406|   120.899252|    75.0317927|   39.6318000|      77.2597443|   96.69889|   60.33830|   37.5158966|  123.9826288|  176.1165937|  100.686157|   39.6318000|            95.832379|
 |uptake at 250 |     NA|   77.6121595|   28.4725162| 2.845990e+01|     27.320205|   21.2960846|   31.26325|   20.0117943|   31.26325|   50.207701|    60.449629|    37.5158967|   19.8159007|      38.6298715|   48.34945|   30.16915|   18.7579489|   61.9913137|   88.0582982|   49.411121|   19.8159007|            47.916189|
 
-#2b2
-### Constraint Effect Size 
+#2b2 ### Constraint Effect Size 
 Constrained CUE was reduced relative to unconstrained CUE, but the effect size varied by metabolite. Plots show unconstrained CUE versus constrained CUE for most common constraining metabolite at 50% maximum biomass and at 25% maximum biomass.
 
 ![](CUEgitsummary_files/figure-html/unnamed-chunk-9-1.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-9-2.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-9-3.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-9-4.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-9-5.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-9-6.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-9-7.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-9-8.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-9-9.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-9-10.png)
