@@ -119,7 +119,7 @@ Carbon use efficiency was explored under two scenarios. (1) Unconstrained CUE wa
 
 Unconstrained CUE ranged from `r min(cuevals[,3])` to `r max(cuevals[,3])`.
 
-```{r,echo=FALSE}
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
 plot(cuevals[,3],col=as.matrix(cuevals[,9]),pch=16,ylab="CUE",xlab="Models Ordered by Increasing CUE")
 legend("topleft",legend=c(rownames(dlsum)),fill=c(as.matrix(dlsum[,4])),cex=0.75,ncol=2)
 ```
@@ -132,7 +132,7 @@ K values of 1 correspond to a Brownian motion process, which implies some degree
 
 Unconstrained CUE was found to have a significant phylogenetic signal with a K of 0.03.
 
-```{r,echo=FALSE}
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
 cuetreenex=read.nexus(file="CUETREE4192016")
 cuetreenex=cuetreenex$tree_3
 cuetreenex$tip.label=newtips
@@ -170,7 +170,7 @@ kable(multiPhylosignal)
 
 Phylogenetic Independent Contrasts were used to test for relationships between CUE and genome traits.
 
-```{r,echo=FALSE}
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
 PICvals=matrix(NA,129,7)
 colnames(PICvals)=c("EXpic","Cexpic","CUEpic","GCpic","Contigspic","Genespic","DNAsizepic")
 for (i in 1:7){
@@ -224,7 +224,7 @@ The uptake kinetics of the most common *constraining* reactions across models we
 **Km and Vmax for Constraining Lists**
 *Fitting MM Models to Kinetics Data*
 
-```{r, echo=FALSE}
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
 kmVm=matrix(NA,6,22,dimnames=list(c("Km","Vm","lm-intercept","lm-slope","uptake at 500","uptake at 250"),colnames(kinetics)))
 par(mfrow=c(2,2))
 for (i in 2:ncol(kinetics)){
@@ -256,7 +256,7 @@ kable(kmVm)
 ### Constraint Effect Size 
 Constrained CUE was reduced relative to unconstrained CUE, but the effect size varied by metabolite.
 
-```{r,echo=FALSE}
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
 #constrainedvals=read.csv(file="Constraining and Essential/constrainedcueall.csv")
 allcon=read.csv(file="allconstrainedsummary04252016.csv",row.names=1,header=T)
 dvalsmat=matrix(NA,40,2)
