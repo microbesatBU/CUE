@@ -1,25 +1,33 @@
 # CUE Summary
 Mustafa  
+[FIRST](#foo)
 
 
 
+
+# Foo
 #**Downloading Summary**
 
 The DOE knowledgebase (kBASE) was searched for genomes from six major phyla found in soil microbial communities. A total of 24,268 genomes were found to correspond to the six major phyla. Results were trimmed to eliminate duplicates within a given genus, resulting in 1,082 unique genera. These genera were searched in the primary literature to determine habitat preference, and eliminate non-soil bacterial species. Ultimately, 231 species were selected for analysis.
 
 
 
-           Genomes   Genera   Selections
---------  --------  -------  -----------
-Alpha         1709      197           32
-Beta          1092      114           30
-Gamma         7731      240           19
-Delta          185       56           10
-Actino        4055      191           25
-Acido           25       12           25
-Firm          8668      233           25
-Verr            36        9           36
-Plancto         29       12           29
+```
+## <!-- html table generated in R 3.2.4 by xtable 1.8-2 package -->
+## <!-- Sun May  1 22:49:37 2016 -->
+## <table border=1>
+## <tr> <th>  </th> <th> Genomes </th> <th> Genera </th> <th> Selections </th>  </tr>
+##   <tr> <td align="right"> Alpha </td> <td align="right"> 1709 </td> <td align="right"> 197 </td> <td align="right">  32 </td> </tr>
+##   <tr> <td align="right"> Beta </td> <td align="right"> 1092 </td> <td align="right"> 114 </td> <td align="right">  30 </td> </tr>
+##   <tr> <td align="right"> Gamma </td> <td align="right"> 7731 </td> <td align="right"> 240 </td> <td align="right">  19 </td> </tr>
+##   <tr> <td align="right"> Delta </td> <td align="right"> 185 </td> <td align="right">  56 </td> <td align="right">  10 </td> </tr>
+##   <tr> <td align="right"> Actino </td> <td align="right"> 4055 </td> <td align="right"> 191 </td> <td align="right">  25 </td> </tr>
+##   <tr> <td align="right"> Acido </td> <td align="right">  25 </td> <td align="right">  12 </td> <td align="right">  25 </td> </tr>
+##   <tr> <td align="right"> Firm </td> <td align="right"> 8668 </td> <td align="right"> 233 </td> <td align="right">  25 </td> </tr>
+##   <tr> <td align="right"> Verr </td> <td align="right">  36 </td> <td align="right">   9 </td> <td align="right">  36 </td> </tr>
+##   <tr> <td align="right"> Plancto </td> <td align="right">  29 </td> <td align="right">  12 </td> <td align="right">  29 </td> </tr>
+##    </table>
+```
 
 ![](fullcuesummaryCOPY04282016_files/figure-html/unnamed-chunk-2-1.png)<!-- -->![](fullcuesummaryCOPY04282016_files/figure-html/unnamed-chunk-2-2.png)<!-- -->![](fullcuesummaryCOPY04282016_files/figure-html/unnamed-chunk-2-3.png)<!-- -->
 
@@ -35,33 +43,25 @@ A database of exchange reactions was built to represent the full range of metabo
 
 ```
 ## Run 0 stress 0.193728 
-## Run 1 stress 0.1937909 
-## ... procrustes: rmse 0.02750604  max resid 0.1853546 
-## Run 2 stress 0.2106912 
-## Run 3 stress 0.1925807 
+## Run 1 stress 0.2019923 
+## Run 2 stress 0.2451109 
+## Run 3 stress 0.1975391 
+## Run 4 stress 0.1965123 
+## Run 5 stress 0.1965028 
+## Run 6 stress 0.1944349 
+## Run 7 stress 0.1961238 
+## Run 8 stress 0.1963955 
+## Run 9 stress 0.2001101 
+## Run 10 stress 0.2273564 
+## Run 11 stress 0.1988808 
+## Run 12 stress 0.1965047 
+## Run 13 stress 0.1927785 
 ## ... New best solution
-## ... procrustes: rmse 0.02764851  max resid 0.1867528 
-## Run 4 stress 0.1937963 
-## Run 5 stress 0.2104447 
-## Run 6 stress 0.1946308 
-## Run 7 stress 0.1967552 
-## Run 8 stress 0.2033541 
-## Run 9 stress 0.1957506 
-## Run 10 stress 0.193729 
-## Run 11 stress 0.1928514 
-## ... procrustes: rmse 0.02326013  max resid 0.1849426 
-## Run 12 stress 0.2409442 
-## Run 13 stress 0.2002043 
-## Run 14 stress 0.1963715 
-## Run 15 stress 0.1963513 
-## Run 16 stress 0.1923058 
-## ... New best solution
-## ... procrustes: rmse 0.02400536  max resid 0.1804044 
-## Run 17 stress 0.1925886 
-## ... procrustes: rmse 0.02398496  max resid 0.1808786 
-## Run 18 stress 0.1956721 
-## Run 19 stress 0.2077468 
-## Run 20 stress 0.2016548
+## ... procrustes: rmse 0.02993125  max resid 0.1858318 
+## Run 14 stress 0.2156187 
+## Run 15 stress 0.1927786 
+## ... procrustes: rmse 0.0002827015  max resid 0.001406908 
+## *** Solution reached
 ```
 
 ![](fullcuesummaryCOPY04282016_files/figure-html/unnamed-chunk-3-2.png)<!-- -->![](fullcuesummaryCOPY04282016_files/figure-html/unnamed-chunk-3-3.png)<!-- -->
@@ -92,13 +92,13 @@ Unconstrained CUE was found to have a significant phylogenetic signal with a K o
 
                    K   PIC.variance.obs   PIC.variance.rnd.mean   PIC.variance.P   PIC.variance.Z
 --------  ----------  -----------------  ----------------------  ---------------  ---------------
-Exrxns     0.1640496       2.051194e+03            3.715174e+04            0.001       -2.5344576
-Cexrxns    0.1725261       1.635154e+03            3.054092e+04            0.001       -2.5098900
-CUE        0.0377776       9.143651e-01            3.769466e+00            0.003       -1.9699214
-GC         1.2898714       7.349652e+01            9.945191e+03            0.001       -2.8330604
-Contigs    0.1758305       4.540426e+06            9.478023e+07            0.004       -0.7252738
-Genes      0.3146108       1.591306e+07            5.695821e+08            0.001       -2.6933099
-DNAsize    0.5020087       1.307122e+13            7.413214e+14            0.001       -2.5890666
+Exrxns     0.1640496       2.051194e+03            3.675441e+04            0.001       -2.5978114
+Cexrxns    0.1725261       1.635154e+03            3.053349e+04            0.001       -2.4517040
+CUE        0.0377776       9.143651e-01            3.867958e+00            0.003       -1.9129813
+GC         1.2898714       7.349652e+01            9.937818e+03            0.001       -2.7610179
+Contigs    0.1758305       4.540426e+06            9.772973e+07            0.005       -0.7168634
+Genes      0.3146108       1.591306e+07            5.730159e+08            0.001       -2.7242516
+DNAsize    0.5020087       1.307122e+13            7.451018e+14            0.001       -2.7606649
 
 
 
