@@ -141,7 +141,9 @@ For each model in the unconstrained environment, C-containing exchange reactions
 
 >>(3) *Constraining*: reactions that biomass production responds to the availability of, i.e. reactions needed at more than a low threshold. 
 
-![](CUEgitsummary_files/figure-html/reactiontypes.png)
+<a><img src="CUEgitsummary_files/figure-html/reactiontypes.png" align="center" height="400"></a>
+
+
 
 The uptake kinetics of the most common *constraining* reactions across models were analyzed. The availability of *constraining* reactions was then set to the concentration resulting in (a) 1/2 and (b) 1/4 of maximum biomass and CUE was recalculated.
 
