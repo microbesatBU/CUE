@@ -10,19 +10,18 @@ output:
 
 ```{r,echo=FALSE,warning=FALSE,message=FALSE}
 #LOAD ALL FILES AND PACKAGES
-setwd("~/Dropbox/BU2016/FBA Workspace")
 library(knitr)
 
 #unconstrained CUE
 library(vegan)
-dlsum=read.csv(file="Model Downloading Summaries/modeldownloadsummary.csv")
+dlsum=read.csv(file="modeldownloadsummary.csv")
   rownames(dlsum)=dlsum[,1]
   dlsum=dlsum[,2:5]
-cue=read.csv(file="Unconstrained CUE/CUESummary02292016.csv") #CUE calculations
-nmds=read.csv(file="Exchange Reaction Database/nmdsmatrix.csv") #reaction presence/absence
-exch=read.csv(file="Exchange Reaction Database/exchangecounts.csv")
-biomasscomp=read.csv(file="Unconstrained CUE/gnegbiomasstable.csv")
-exchaccumulation=read.csv(file="Exchange Reaction Database/exchangeaccumulation.csv")
+cue=read.csv(file="CUESummary02292016.csv") #CUE calculations
+nmds=read.csv(file="nmdsmatrix.csv") #reaction presence/absence
+exch=read.csv(file="exchangecounts.csv")
+biomasscomp=read.csv(file="gnegbiomasstable.csv")
+exchaccumulation=read.csv(file="exchangeaccumulation.csv")
 
 
 #Phylogenetic 
@@ -38,23 +37,23 @@ require(caper)
 require(geiger)
 require(phytools) 
 require(lsr)
-tips=read.csv(file="multiphylosignal/tiplabels04252016.csv")
+tips=read.csv(file="tiplabels04252016.csv")
   newtips=as.vector(tips$newtiplabel)
-cuevals=read.csv(file="multiphylosignal/treedata04252016.csv",row.names=1)
-tipcolors=read.csv(file="multiphylosignal/tipcolors.csv",header=TRUE)
+cuevals=read.csv(file="treedata04252016.csv",row.names=1)
+tipcolors=read.csv(file="tipcolors.csv",header=TRUE)
   rownames(tipcolors)=tipcolors[,1]
   tipcolors=tipcolors[,-1]
 
-  #droptips=list(as.vector(read.csv(file="multiphylosignal/droplist04252016.csv"))) 
+  #droptips=list(as.vector(read.csv(file="droplist04252016.csv"))) 
 droptips=c("fung7","fung4","fung1","fung6","fung21","fung5","fung15","fung16","fung13","fung3","fung2","fung10","fung17","fung14","fung22","fung20","fung11","fung18","fung8","fung12","fung9","fung19","DROP","beta216529","beta208407","gamma241909","gamma206868","gamma29232","gamma206762","gamma1291","gamma239727","gamma1700","gamma241870","gamma1658","gamma244739","gamma1036","gamma1810","gamma25124","gamma207278","gamma207279","gamma27931","gamma29680","gamma240435","gamma206796","alpha23631","alpha239924","alpha239423","alpha216325","alpha23125","alpha210983","alpha210927","alpha240433","alpha242169","alpha210883","alpha242546","alpha3561","alpha27578","alpha216012","alpha1464","alpha2715","alpha29322","alpha25278","alpha1849","alpha240091","alpha884","alpha1480","alpha1262","alpha1263","alpha216407","alpha24923","alpha213861","alpha207171","alpha3854","alpha240427","alpha206960","alpha29554","delta1549","delta1591","delta24611","delta31404","delta1143","delta240449","delta241294","delta1314","delta216275","delta242777","acido239421","firm209983","firm1762","firm1822","firm207030","firm209329","firm1050","firm206769","firm216502","firm1960","firm206825","firm208667","firm207276","firm1051","firm207033","firm207155","firm207227","firm209251","firm207188","firm241242","firm242567","firm1079","firm207289","firm208216","firm1506","firm23121","actino242832","actino1646","actino207280","actino206917","actino209263","actino1734","actino242134","actino1728","actino215749","actino241290","actino207004","actino242857","actino1539","actino30857","actino241325","actino241941","actino1730","actino215897","actino216527","actino1537","actino242150","actino3135","actino1687","actino207069","actino1142","actino207323","actino1571","actino207250","actino216514","actino207016","actino207015","actino207154","actino29591","actino30870","actino241322","actino241934","actino208409","actino239739","actino29570","actino207161","actino241238","actino1498","actino29691","actino206765","actino242230","actino209774","actino241330","actino1015","actino241321","actino215443","actino242565","actino244743","actino1329","actino206770","verr29794")
 
 
 #kinetics
-con=read.csv(file="Constraining and Essential/constraineddifferences.csv")
+con=read.csv(file="constraineddifferences.csv")
   contrim=con
   contrim[contrim==0]<-NA
 kinetics=read.csv(file="constraininguptakekinetics.csv")
-kinsum=read.csv(file="Constraining and Essential/kineticsummary.csv")
+kinsum=read.csv(file="kineticsummary.csv")
 library(drc)
 ```
 
@@ -134,7 +133,7 @@ K values of 1 correspond to a Brownian motion process, which implies some degree
 Unconstrained CUE was found to have a significant phylogenetic signal with a K of 0.03.
 
 ```{r,echo=FALSE}
-cuetreenex=read.nexus(file="multiphylosignal/CUETREE4192016")
+cuetreenex=read.nexus(file="CUETREE4192016")
 cuetreenex=cuetreenex$tree_3
 cuetreenex$tip.label=newtips
 rootedphylogeny <- root(cuetreenex, "root")
@@ -259,7 +258,7 @@ Constrained CUE was reduced relative to unconstrained CUE, but the effect size v
 
 ```{r,echo=FALSE}
 #constrainedvals=read.csv(file="Constraining and Essential/constrainedcueall.csv")
-allcon=read.csv(file="Constraining and Essential/allconstrainedsummary04252016.csv",row.names=1,header=T)
+allcon=read.csv(file="allconstrainedsummary04252016.csv",row.names=1,header=T)
 dvalsmat=matrix(NA,40,2)
 
 rownames(dvalsmat)=c(colnames(allcon))
