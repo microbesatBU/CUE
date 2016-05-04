@@ -170,13 +170,16 @@ gly.phe.10K1K = upper bound of all intracellular reactions and biomass productio
 
 #2b2 
 ### Constraint Effect Size 
-Constrained CUE was reduced relative to unconstrained CUE, but the effect size varied by metabolite. Plots show unconstrained CUE versus constrained CUE for most common constraining metabolite at 50% maximum biomass and at 25% maximum biomass.
+**CONSTRAINED/UNCONSTRAINED COMPARISONS AND COHENS D**
+Constrained CUE was reduced relative to unconstrained CUE, but the effect size varied by metabolite. Cohen's D for common **constraining** metabolites shown below, with width of barplot scaled by number of models containing the reaction. *Note that all models containing the reaction are shown, including ones that were NOT constrained by the reaction despite having it (Unconstrained CUE = Constrained CUE for these).*
+
+![](CUEgitsummary_files/figure-html/unnamed-chunk-10-1.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-10-2.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-10-3.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-10-4.png)
+
+Plots show unconstrained CUE versus constrained CUE for most common constraining metabolites at 50% maximum biomass (x-axis label ends with 500) and at 25% maximum biomass (x-axis label ends with 250).
 
 ![](CUEgitsummary_files/figure-html/unnamed-chunk-9-1.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-9-2.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-9-3.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-9-4.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-9-5.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-9-6.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-9-7.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-9-8.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-9-9.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-9-10.png)
 
-**CONSTRAINED/UNCONSTRAINED COMPARISONS AND COHENS D**
-
-![](CUEgitsummary_files/figure-html/unnamed-chunk-10-1.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-10-2.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-10-3.png)![](CUEgitsummary_files/figure-html/unnamed-chunk-10-4.png)
+**Summary Table**
 
 |              | Cohens D| Paired T-test Pval|
 |:-------------|--------:|------------------:|
